@@ -67,59 +67,62 @@ int show = 1;
       bottomNavigationBar: GestureDetector(
         onTap: () {
           showModalBottomSheet(
+            isScrollControlled: true,
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(50),
                       topLeft: Radius.circular(50))),
               context: context,
-              builder: (context) => BottomSheet(
-                backgroundColor: Colors.white,
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(50),
-                          topLeft: Radius.circular(50))),
-                  onClosing: () {},
-                  builder: (_) => SizedBox(
-                        height: 405,
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 25, left: 20, right: 25),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width - 290,
-                                height: 3,
-                                color: Colors.black,
-                              ),
-                              const SizedBox(height: 30),
-                              const Text("Add Task",
-                                  style:
-                                  TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: "Poppins",
-                                    fontSize: 30,
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w600
-                                  )),
-                              const SizedBox(height: 10),
-                              const InputField(title: "Enter Title", height: 60),
-                              const SizedBox(height: 20),
-                              const InputField(title: "Enter Description", height: 120),
-                              const SizedBox(height: 20),
-                              GestureDetector(
-                                onTap: (){
-                                  setState(() {
-                                    show = 0;
-                                  });
-                                  Navigator.pop(context);
-                                },
-                                child: const AppButton(name: "Add Task")
-                              )
-                            ],
+              builder: (context) => SingleChildScrollView(
+                child: BottomSheet(
+                  backgroundColor: Colors.white,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(50),
+                            topLeft: Radius.circular(50))),
+                    onClosing: () {},
+                    builder: (_) => SizedBox(
+                          height: 405,
+                          width: MediaQuery.of(context).size.width,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 25, left: 20, right: 25),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width - 290,
+                                  height: 3,
+                                  color: Colors.black,
+                                ),
+                                const SizedBox(height: 30),
+                                const Text("Add Task",
+                                    style:
+                                    TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: "Poppins",
+                                      fontSize: 30,
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w600
+                                    )),
+                                const SizedBox(height: 10),
+                                const InputField(title: "Enter Title", height: 60),
+                                const SizedBox(height: 20),
+                                const InputField(title: "Enter Description", height: 120),
+                                const SizedBox(height: 20),
+                                GestureDetector(
+                                  onTap: (){
+                                    setState(() {
+                                      show = 0;
+                                    });
+                                    Navigator.pop(context);
+                                  },
+                                  child: const AppButton(name: "Add Task")
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      )));
+                        )),
+              ));
         },
         child: Container(
           width: MediaQuery.of(context).size.width,
