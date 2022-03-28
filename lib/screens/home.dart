@@ -73,7 +73,8 @@ int show = 1;
                       topRight: Radius.circular(50),
                       topLeft: Radius.circular(50))),
               context: context,
-              builder: (context) => SingleChildScrollView(
+              builder: (context) => Padding(
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: BottomSheet(
                   backgroundColor: Colors.white,
                     shape: const RoundedRectangleBorder(
